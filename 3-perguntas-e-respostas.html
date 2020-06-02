@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD</title>
-  <meta name="description" content="Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
+  <title>3 Perguntas e respostas | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD</title>
+  <meta name="description" content="3 Perguntas e respostas | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
+  <meta property="og:title" content="3 Perguntas e respostas | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
+  <meta name="twitter:title" content="3 Perguntas e respostas | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-como-rodar-o-site-localmente.html"/>
+<link rel="prev" href="2-pastas-e-arquivos-principais.html"/>
+<link rel="next" href="4-como-dar-o-deploy-do-site-para-o-endereço-ufrgs.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -166,24 +166,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD</h1>
-<p class="author"><em>Gabriel Holmer Saul</em></p>
-<p class="date"><em>2020/1</em></p>
+<div id="perguntas-e-respostas" class="section level1">
+<h1><span class="header-section-number">3</span> Perguntas e respostas</h1>
+<div id="caso-o-endereço-do-site-mude-como-comunico-isso-ao-blogdown" class="section level2">
+<h2><span class="header-section-number">3.1</span> Caso o endereço do site mude, como “comunico” isso ao blogdown?</h2>
+<p>config.toml -&gt; baseurl</p>
 </div>
-<div id="prefácio" class="section level1 unnumbered">
-<h1>Prefácio</h1>
-<p>Este material foi escrito no semestre de 2020/1, no qual a professora Márcia Barbian me deu a tarefa de construir um site para a disciplina de MAT02219 - Probabilidade e Estatística EAD. O objetivo deste material é fornecer um guia para que professores, monitores e colaboradores da disciplina possam fazer a manutenção do site sem precisar aprender o funcionamento do pacote <code>Blogdown</code> e do <code>Hugo</code> do zero.</p>
-<p>Eu assumo que a pessoa que estiver lendo este material sabe pouco ou nada de programação em html, css ou java script e que também não sabe como o pacote <code>Blogdown</code> do R e o gerador de sites estáticos <code>Hugo</code> funcionam. Eu não tenho conhecimento aprofundado em nenhuma dessas ferramentas citadas, não esperem nada muito profissional aqui, apenas o necessário para gerir o site.</p>
-<p>Por fim, estou assumindo que o repositório do site ainda se encontra em <a href="https://github.com/Probabilidade-e-Estatistica-EAD/site">https://github.com/Probabilidade-e-Estatistica-EAD/site</a>.</p>
+<div id="como-mudar-o-título-do-site-que-aparece-na-guia-do-browser" class="section level2">
+<h2><span class="header-section-number">3.2</span> Como mudar o título do site que aparece na guia do browser?</h2>
+<p>config.toml -&gt; title</p>
+</div>
+<div id="como-mudar-o-número-de-posts-que-aparecem-por-vez-em-uma-página-na-aba-blog" class="section level2">
+<h2><span class="header-section-number">3.3</span> Como mudar o número de posts que aparecem por vez em uma página na aba Blog?</h2>
+<p>config.toml -&gt; paginate</p>
+</div>
+<div id="como-mudar-a-imagem-de-fundo" class="section level2">
+<h2><span class="header-section-number">3.4</span> Como mudar a imagem de fundo?</h2>
+<p>Colque a imagem nova em static/img e altere o endereço em config.toml -&gt; header_image</p>
+</div>
+<div id="como-mudar-a-imagem-de-erro-404" class="section level2">
+<h2><span class="header-section-number">3.5</span> Como mudar a imagem de erro 404?</h2>
+<p>Colque a imagem nova em static/img e altere o endereço em config.toml -&gt; image_404</p>
+</div>
+<div id="como-mudar-o-texto-da-página-de-erro-404" class="section level2">
+<h2><span class="header-section-number">3.6</span> Como mudar o texto da página de erro 404?</h2>
+<p>config.toml -&gt; title_404</p>
+</div>
+<div id="como-adicionar-um-novo-menu-superior" class="section level2">
+<h2><span class="header-section-number">3.7</span> Como adicionar um novo menu superior?</h2>
+<p>Vá em content e crie uma nova pasta, aqui você pode escolher o nome para a pasta que você preferir.</p>
+<p><img src="img/novo_menu1.png" /></p>
+<p>Crie um novo arquivo em Rmarkdown no formato abaixo:</p>
+<p><img src="img/novo_menu2.png" /></p>
+<p>No yaml, o argumento title será o texto mostrado na guia do browser quando o usuário estiver acessando o menu. O comando <code>h1</code> em html é equivalente ao <code>#</code> do Rmarkdown, mas recomendo que usem para o título na página essa estrutura pois <code>class="titulo"</code> é um bloco de código em css que programei para a fonte ficar maior que o normal quando o <code>h1</code> tiver essa classe (arquivo em themes/hugo-theme-cleanwhite/static/css/hux-blog.min.css). Depois do título, o resto do arquivo pode ser escrito como um Rmarkdown normal.</p>
+<p>Salve o arquivo com o nome <code>index.Rmd</code>.</p>
+<p><img src="img/novo_menu3.png" /></p>
+<p>A função <code>serve_site()</code> irá renderizar o Rmd para html automaticamente (senão, salve algum arquivo para a função renderizar o site novamente ou rode o <code>serve_site()</code> de novo).</p>
+<p><img src="img/novo_menu4.png" /></p>
+<p>A página já está na pasta public (ou seja, já está no site), mas agora precisamos informar ao site que queremos que a página seja exibida como menu superior.</p>
+<p><img src="img/novo_menu5.png" /></p>
+<p>Se olharmos a prévia do site, o novo menu não foi adicionado.</p>
+<p><img src="img/novo_menu6.png" /></p>
+<p>Mas se digitarmos manualmente o endereço da pasta na url, temos como acesar a página.</p>
+<p><img src="img/novo_menu7.png" /></p>
+<p>Obviamente, o usuário não vai adivinhar que existe um menu escondido no site, então se quisermos que ele o acesse, precisamos adicionar a página como um menu superior.</p>
+<p>Vá em config.toml, no final do arquivo você deve ver um bloco de código parecido com isto:</p>
+<p><img src="img/novo_menu8.png" /></p>
+<p>[[params.addtional_menus]] = Declara que você quer adicionar um novo menu</p>
+<p>title = “Título do menu” = Informa o título do menu, note que o site sempre põe o texto em caixa alta.</p>
+<p>href = “pasta_do_menu/index.html” = Endereço do arquivo html transformado pelo serve site apartir do Rmd.</p>
+<p>Adaptando o exemplo:</p>
+<p><img src="img/novo_menu9.png" /></p>
+<p>Note o título na guia no canto superior esquerdo, o título na página e o nome menu teste na linha de menus.</p>
+<p><img src="img/novo_menu10.png" /></p>
+</div>
+<div id="como-modificar-o-conteúdo-de-um-menu-superior" class="section level2">
+<h2><span class="header-section-number">3.8</span> Como modificar o conteúdo de um menu superior?</h2>
+<p>Leia “Como adicionar um novo menu superior?” antes.</p>
+<p>Vá em content/pasta_do_menu_que_deseja_alterar/index.Rmd</p>
+<p>Como o arquivo é um Rmarkdown, a alteração é igual a de um Rmarkdown qualquer.</p>
+</div>
+<div id="como-trocar-a-ordem-dos-menus-superiores" class="section level2">
+<h2><span class="header-section-number">3.9</span> Como trocar a ordem dos menus superiores?</h2>
+<p>Leia “Como adicionar um novo menu superior?” antes.</p>
+<p>Em config.toml, desça até chegar nos blocos de código referentes aos menus. A ordem dos menus é a ordem dos blocos de código. Se eu quisesse que o menu teste ficasse entre livro e slides, bastaria deixar o bloco de código entre os dois no config.toml. As ordem das abas home e blog são tratadas de maneira diferente.</p>
+</div>
+<div id="como-remover-um-menu-superior" class="section level2">
+<h2><span class="header-section-number">3.10</span> Como remover um menu superior?</h2>
+<p>Leia “Como adicionar um novo menu superior?” antes.</p>
+<p>1 - Vá em config.toml e exclua o bloco de código correspondente ao menu</p>
+<p>2 - Exclua a pasta do menu em content</p>
+<p>3 - Exclua todos os arquivos da pasta public para garantir que não haverá resquícios do menu no site.</p>
+</div>
+<div id="importante-como-funcionam-os-endereços-de-arquivos-dentro-dos-códigos" class="section level2">
+<h2><span class="header-section-number">3.11</span> IMPORTANTE: Como funcionam os endereços de arquivos dentro dos códigos?</h2>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="1-como-rodar-o-site-localmente.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="2-pastas-e-arquivos-principais.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-como-dar-o-deploy-do-site-para-o-endereço-ufrgs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

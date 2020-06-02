@@ -87,7 +87,7 @@ No projeto, algumas pastas e arquivos têm importância fundamental para a const
 
 ## public
 
-A pasta public é o site propriamente dito. Ao executar a função `serve_site()`, todos os arquivos de outras pastas têm o propósito de agregar conteúdo ao site ou juntar os pedaços de código espalhados pelo diretório afim de criar o site.
+A pasta public é o site propriamente dito. Isso significa que é esta pasta apenas que iremos uppar no endereço web. Ao executar a função `serve_site()`, todos os arquivos de outras pastas têm o propósito de agregar conteúdo ao site ou juntar os pedaços de código espalhados pelo diretório a fim de criar o site.
 
 ![](img/2.public.png)
 
@@ -99,7 +99,7 @@ Aqui ficam os arquivos detalhistas de programação html, css e javascript.
 
 ![](img/2.themes.png)
 
-O Hugo possuí vários temas diferentes e cada um deles mantém mais ou menos a mesma estrutura de site. Eles tem maneiras similares de adicionar um post, uma imagem ou um menu superior, mas mesmo assim eles tem aparências diferentes. O que modifica essa aparência (tamanho da fonte, cor de fundo, se algum botão terá ou não uma animação) são os arquivos da pasta themes. A maior parte das alterações relacionadas à estrutura do site serão feitas dentro desta pasta. 
+O Hugo possuí vários temas diferentes e cada um deles mantém mais ou menos a mesma estrutura de arquivos e pastas. Eles tem maneiras similares de adicionar um post, uma imagem ou um menu superior, mas mastém aparências diferentes. O que modifica essa aparência (tamanho da fonte, cor de fundo, se algum botão terá ou não uma animação) são os arquivos da pasta themes. A maior parte das alterações relacionadas à estrutura do site são feitas dentro desta pasta. 
 
 ## content
 
@@ -140,6 +140,116 @@ Como o nome da pasta em content e static é igual (isso é necessário), o `Blog
 Isso facilita muito a programação da página, pois o endereço da imagem no código assume que as imagens estarão no mesmo diretório final.
 
 ## config.toml
+
+Esse arquivo controla várias macro opções do site. Recomendo que você dê uma olhada nos argumentos desse arquivo, pois a maioria deles é auto explicativa. Uma ressalva importante é que é no config.toml que são adicionados, removidos ou modificados os menus superiores (com excessão da homepage e de posts do blog, que são tratados de outra maneira).
+
+# Perguntas e respostas
+
+## Caso o endereço do site mude, como "comunico" isso ao blogdown?
+
+config.toml -> baseurl
+
+## Como mudar o título do site que aparece na guia do browser?
+
+config.toml -> title
+
+## Como mudar o número de posts que aparecem por vez em uma página na aba Blog?
+
+config.toml -> paginate
+
+
+
+## Como mudar a imagem de fundo?
+
+Colque a imagem nova em static/img e altere o endereço em config.toml -> header_image
+
+## Como mudar a imagem de erro 404?
+
+Colque a imagem nova em static/img e altere o endereço em config.toml -> image_404
+
+## Como mudar o texto da página de erro 404?
+
+config.toml -> title_404
+
+## Como adicionar um novo menu superior?
+
+Vá em content e crie uma nova pasta, aqui você pode escolher o nome para a pasta que você preferir.
+
+![](img/novo_menu1.png)
+
+Crie um novo arquivo em Rmarkdown no formato abaixo:
+
+![](img/novo_menu2.png)
+
+No yaml, o argumento title será o texto mostrado na guia do browser quando o usuário estiver acessando o menu. O comando `h1` em html é equivalente ao `#` do Rmarkdown, mas recomendo que usem para o título na página essa estrutura pois `class="titulo"` é um bloco de código em css que programei para a fonte ficar maior que o normal quando o `h1` tiver essa classe (arquivo em themes/hugo-theme-cleanwhite/static/css/hux-blog.min.css). Depois do título, o resto do arquivo pode ser escrito como um Rmarkdown normal.
+
+Salve o arquivo com o nome `index.Rmd`.
+
+![](img/novo_menu3.png)
+
+A função `serve_site()` irá renderizar o Rmd para html automaticamente (senão, salve algum arquivo para a função renderizar o site novamente ou rode o `serve_site()` de novo).
+
+![](img/novo_menu4.png)
+
+A página já está na pasta public (ou seja, já está no site), mas agora precisamos informar ao site que queremos que a página seja exibida como menu superior.
+
+![](img/novo_menu5.png)
+
+Se olharmos a prévia do site, o novo menu não foi adicionado.
+
+![](img/novo_menu6.png)
+
+Mas se digitarmos manualmente o endereço da pasta na url, temos como acesar a página.
+
+![](img/novo_menu7.png)
+
+Obviamente, o usuário não vai adivinhar que existe um menu escondido no site, então se quisermos que ele o acesse, precisamos adicionar a página como um menu superior.
+
+Vá em config.toml, no final do arquivo você deve ver um bloco de código parecido com isto:
+
+![](img/novo_menu8.png)
+
+[[params.addtional_menus]] = Declara que você quer adicionar um novo menu
+
+title =  "Título do menu" = Informa o título do menu, note que o site sempre põe o texto em caixa alta.
+
+href = "pasta_do_menu/index.html" = Endereço do arquivo html transformado pelo serve site apartir do Rmd.
+
+Adaptando o exemplo:
+
+![](img/novo_menu9.png)
+
+Note o título na guia no canto superior esquerdo, o título na página e o nome menu teste na linha de menus.
+
+![](img/novo_menu10.png)
+
+
+## Como modificar o conteúdo de um menu superior?
+
+Leia "Como adicionar um novo menu superior?" antes.
+
+Vá em content/pasta_do_menu_que_deseja_alterar/index.Rmd
+
+Como o arquivo é um Rmarkdown, a alteração é igual a de um Rmarkdown qualquer.
+
+## Como trocar a ordem dos menus superiores?
+
+Leia "Como adicionar um novo menu superior?" antes.
+
+Em config.toml, desça até chegar nos blocos de código referentes aos menus. A ordem dos menus é a ordem dos blocos de código. Se eu quisesse que o menu teste ficasse entre livro e slides, bastaria deixar o bloco de código entre os dois no config.toml. As ordem das abas home e blog são tratadas de maneira diferente.
+
+## Como remover um menu superior?
+
+Leia "Como adicionar um novo menu superior?" antes.
+
+1 - Vá em config.toml e exclua o bloco de código correspondente ao menu
+
+2 - Exclua a pasta do menu em content
+
+3 - Exclua todos os arquivos da pasta public para garantir que não haverá resquícios do menu no site.
+
+
+## IMPORTANTE: Como funcionam os endereços de arquivos dentro dos códigos?
 
 # Como dar o deploy do site para o endereço UFRGS
 
