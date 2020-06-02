@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Pastas e arquivos principais | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD</title>
-  <meta name="description" content="2 Pastas e arquivos principais | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
+  <title>3 Como dar o deploy do site para o endereço UFRGS | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD</title>
+  <meta name="description" content="3 Como dar o deploy do site para o endereço UFRGS | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Pastas e arquivos principais | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
+  <meta property="og:title" content="3 Como dar o deploy do site para o endereço UFRGS | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Pastas e arquivos principais | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
+  <meta name="twitter:title" content="3 Como dar o deploy do site para o endereço UFRGS | Como gerenciar o site de MAT02219 - Probabilidade e Estatística EAD" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="1-como-rodar-o-site-localmente.html"/>
-<link rel="next" href="3-como-dar-o-deploy-do-site-para-o-endereço-ufrgs.html"/>
+<link rel="prev" href="2-pastas-e-arquivos-principais.html"/>
+<link rel="next" href="4-perguntas-e-respostas.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -167,56 +167,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pastas-e-arquivos-principais" class="section level1">
-<h1><span class="header-section-number">2</span> Pastas e arquivos principais</h1>
-<p>No projeto, algumas pastas e arquivos têm importância fundamental para a construção do site e na maioria dos casos <strong>precisam</strong> ter um nome específico. Vamos ver algumas delas agora.</p>
-<div id="public" class="section level2">
-<h2><span class="header-section-number">2.1</span> public</h2>
-<p>A pasta public é o site propriamente dito. Isso significa que é esta pasta apenas que iremos uppar no endereço web. Ao executar a função <code>serve_site()</code>, todos os arquivos de outras pastas têm o propósito de agregar conteúdo ao site ou juntar os pedaços de código espalhados pelo diretório a fim de criar o site.</p>
-<p><img src="img/2.public.png" /></p>
-<p>Se você já usou o pacote <code>Bookdown</code>, deve ter notado que ele cria mais de um arquivo html e também algumas pastas, diferente do output em html do Rmarkdown, que é apenas um arquivo html. Isso acontece porque no <code>Bookdown</code>, cada html é um capítulo ou subcapítulo do livro; o mesmo acontece com o site, existem vários arquivos html dentro da pasta public, pois cada página do site é um html diferente. No <code>Bookdown</code>, as pastas que ele gera contém arquivos que dão a aparência suave e estilosa para os html’s gerados. Sem elas, os arquivos terão uma aparência rústica, tipo o google da década de 90. O mesmo ocorre para o site, aquelas várias pastas modificam diferentes detalhes, como fonte, alinhamento, design…</p>
-</div>
-<div id="themes" class="section level2">
-<h2><span class="header-section-number">2.2</span> themes</h2>
-<p>Aqui ficam os arquivos detalhistas de programação html, css e javascript.</p>
-<p><img src="img/2.themes.png" /></p>
-<p>O Hugo possuí vários temas diferentes e cada um deles mantém mais ou menos a mesma estrutura de arquivos e pastas. Eles tem maneiras similares de adicionar um post, uma imagem ou um menu superior, mas mastém aparências diferentes. O que modifica essa aparência (tamanho da fonte, cor de fundo, se algum botão terá ou não uma animação) são os arquivos da pasta themes. A maior parte das alterações relacionadas à estrutura do site são feitas dentro desta pasta.</p>
-</div>
-<div id="content" class="section level2">
-<h2><span class="header-section-number">2.3</span> content</h2>
-<p>Aqui ficam os posts e menus superiores.</p>
-<p><img src="img/2.content.png" /></p>
-<p><img src="img/2.content2.png" /></p>
-<p>Vejamos como os arquivos desta pasta funcionam com um exemplo. Em extra/index.Rmd (é fortemente recomendável que o nome dos arquivos dessas pastas seja index).</p>
-<p><img src="img/2.content.extra1.png" /></p>
-<p>O arquivo que dá conteúdo ao menu Materiais Extras é um arquivo em Rmarkdown (.Rmd), então sabendo usar essa “linguagem” é possível alterar o conteúdo desse menu a vontade. Note que foram adicionados alguns códigos em html, que o Rmarkdown reconhece, para deixar a aparência do site mais sólida.</p>
-<p><img src="img/2.content.extra2.png" /></p>
-<p>A maioria dos arquivos que a página irá usar também precisa estar na pasta. Veja, por exemplo, a pasta listas.</p>
-<p><img src="img/2.content.arquivos1.png" /></p>
-<p><img src="img/2.content.arquivos2.png" /></p>
-<p><img src="img/2.content.arquivos3.png" /></p>
-</div>
-<div id="static" class="section level2">
-<h2><span class="header-section-number">2.4</span> static</h2>
-<p>Arquivos que serão adicionados às páginas, como pdf’s, ficam na pasta content. Com excessão de imagens, que ficam na pasta static. Na verdade, a pasta static serve apenas para guardar imagens que serão usadas nos posts. Vejamos o exemplo da pasta equipe.</p>
-<p><img src="img/2.static.equipe1.png" /></p>
-<p><img src="img/2.static.equipe2.png" /></p>
-<p>Como o nome da pasta em content e static é igual (isso é necessário), o <code>Blogdown</code> irá mesclar as duas pastas, e no public ficará assim.</p>
-<p><img src="img/2.static.equipe3.png" /></p>
-<p>Isso facilita muito a programação da página, pois o endereço da imagem no código assume que as imagens estarão no mesmo diretório final. Recomendo que, ao adicionar uma imagem à um menu, criem uma pasta no static com o mesmo nome que a pasta do content e mantenha o arquivo index.Rmd do content na primeira camada da pasta, ou seja, não ponha o index.Rmd dentro de mais outra pasta (por exemplo, deixe novo_menu/index.Rmd, mas não deixe novo_menu/pasta_aleatoria/index.Rmd).</p>
-</div>
-<div id="config.toml" class="section level2">
-<h2><span class="header-section-number">2.5</span> config.toml</h2>
-<p>Esse arquivo controla várias macro opções do site. Recomendo que você dê uma olhada nos argumentos desse arquivo, pois a maioria deles é auto explicativa. Uma ressalva importante é que é no config.toml que são adicionados, removidos ou modificados os menus superiores (com excessão da homepage e de posts do blog, que são tratados de outra maneira).</p>
-</div>
+<div id="como-dar-o-deploy-do-site-para-o-endereço-ufrgs" class="section level1">
+<h1><span class="header-section-number">3</span> Como dar o deploy do site para o endereço UFRGS</h1>
+<p>1 - Se você terminou as alterações do site e rodou o comando <code>Serve Site</code>, recomendo reiniciar o R para interromper atualização automática e impedir que o comando adicione arquivos à pasta public.</p>
+<p><img src="img/2.passo1.png" /></p>
+<p>2 - Exclua todos os arquivos da pasta public</p>
+<p><img src="img/2.passo2.png" /></p>
+<p>3 - Rode o comando <code>blogdown::build_site()</code>. A diferença entre o <code>serve_site()</code> e o <code>build_site()</code> é que o primeiro gera o site para ser visualizado localmente, enquanto que o segundo gera o site para dar o deploy da pasta public no domínio. Ambos modificam o conteúdo da pasta public para cumprir o seu propósito, por isso é necessário excluir os arquivos gerados pelo <code>serve_site()</code> antes de rodar o <code>build_site()</code>.</p>
+<p><img src="img/2.passo3.png" /></p>
+<p>4 - Ao lado da aba Console, clique na aba Terminal e digite o seguinte comando <code>git pull origin master</code>. Esse comando adiciona quaisquer modificações em arquivos que estão no repositório do github mas não no seu repositório local. É importante usar esse comando para se certificar que você não estará sobrescrevendo alterações feitas por outros usuários na branch master, e seu repositório ficará igual ao do github.</p>
+<p><img src="img/2.passo4.png" /></p>
+<p>5 - Rode o comando <code>git add --all</code></p>
+<p><img src="img/2.passo5.png" /></p>
+<p>6 - Em seguida, digite o comando <code>git commit -m "MENSAGEM DO COMMIT"</code></p>
+<p><img src="img/2.passo6.png" /></p>
+<p>7 - Digite o comando <code>git push origin master</code> e suas alterações estarão no github.</p>
+<p><img src="img/2.passo7.png" /></p>
+<p>8 - Por fim, use algum software para dar o deploy no domínio UFRGS, como o FileZilla, lembrando que apenas a pasta public será upada, pois ela é o site.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="1-como-rodar-o-site-localmente.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="3-como-dar-o-deploy-do-site-para-o-endereço-ufrgs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="2-pastas-e-arquivos-principais.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-perguntas-e-respostas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -137,11 +137,47 @@ Como o nome da pasta em content e static é igual (isso é necessário), o `Blog
 
 ![](img/2.static.equipe3.png)
 
-Isso facilita muito a programação da página, pois o endereço da imagem no código assume que as imagens estarão no mesmo diretório final.
+Isso facilita muito a programação da página, pois o endereço da imagem no código assume que as imagens estarão no mesmo diretório final. Recomendo que, ao adicionar uma imagem à um menu, criem uma pasta no static com o mesmo nome que a pasta do content e mantenha o arquivo index.Rmd do content na primeira camada da pasta, ou seja, não ponha o index.Rmd dentro de mais outra pasta (por exemplo, deixe novo_menu/index.Rmd, mas não deixe novo_menu/pasta_aleatoria/index.Rmd).
 
 ## config.toml
 
 Esse arquivo controla várias macro opções do site. Recomendo que você dê uma olhada nos argumentos desse arquivo, pois a maioria deles é auto explicativa. Uma ressalva importante é que é no config.toml que são adicionados, removidos ou modificados os menus superiores (com excessão da homepage e de posts do blog, que são tratados de outra maneira).
+
+# Como dar o deploy do site para o endereço UFRGS
+
+1 - Se você terminou as alterações do site e rodou o comando `Serve Site`, recomendo reiniciar o R para interromper atualização automática e impedir que o comando adicione arquivos à pasta public.
+
+![](img/2.passo1.png)
+
+2 - Exclua todos os arquivos da pasta public
+
+![](img/2.passo2.png)
+
+3 - Rode o comando `blogdown::build_site()`. A diferença entre o `serve_site()` e o `build_site()` é que o primeiro gera o site para ser visualizado localmente, enquanto que o segundo gera o site para dar o deploy da pasta public no domínio. Ambos modificam o conteúdo da pasta public para cumprir o seu propósito, por isso é necessário excluir os arquivos gerados pelo `serve_site()` antes de rodar o `build_site()`.
+
+![](img/2.passo3.png)
+
+4 - Ao lado da aba Console, clique na aba Terminal e digite o seguinte comando `git pull origin master`. Esse comando adiciona quaisquer modificações em arquivos que estão no repositório do github mas não no seu repositório local. É importante usar esse comando para se certificar que você não estará sobrescrevendo alterações feitas por outros usuários na branch master, e seu repositório ficará igual ao do github.
+
+![](img/2.passo4.png)
+
+5 - Rode o comando `git add --all`
+
+![](img/2.passo5.png)
+
+6 - Em seguida, digite o comando `git commit -m "MENSAGEM DO COMMIT"`
+
+![](img/2.passo6.png)
+
+7 - Digite o comando `git push origin master` e suas alterações estarão no github.
+
+![](img/2.passo7.png)
+
+8 - Por fim, use algum software para dar o deploy no domínio UFRGS, como o FileZilla, lembrando que apenas a pasta public será upada, pois ela é o site.
+
+
+
+
 
 # Perguntas e respostas
 
@@ -224,7 +260,7 @@ Note o título na guia no canto superior esquerdo, o título na página e o nome
 ![](img/novo_menu10.png)
 
 
-## Como modificar o conteúdo de um menu superior?
+## Como mudar o conteúdo de um menu superior?
 
 Leia "Como adicionar um novo menu superior?" antes.
 
@@ -249,39 +285,61 @@ Leia "Como adicionar um novo menu superior?" antes.
 3 - Exclua todos os arquivos da pasta public para garantir que não haverá resquícios do menu no site.
 
 
+## Como mudar a homepage?
+
+O tema do site, cleanwhite, foi criado para ser um blog pessoal. Por default, a homepage é a lista de todos os posts que a pessoa criou. Para mostrar uma página fixa ao invéz da lista de posts, foi necessário fazer uma "gambiarra" no site. Assim, os passos para modificar o conteúdo da homepage são os seguintes:
+
+Vá em content/homepage/home.Rmd e faça as alterações desejadas no arquivo (note que o arquivo não tem nome index.Rmd, mas você verá que para este caso isso não importa).
+
+![](img/homepage1.png)
+
+Salve o arquivo e isso irá ativar a função `serve_site()`, que irá transformar o arquivo Rmd em html. Abra o arquivo content/homepage/home.html e copie tudo menos as três primeiras linhas com o título.
+
+![](img/homepage2.png)
+
+Vá em themes/hugo-theme-cleanwhite/layouts/partials/homepage.html e cole o código que você copiou entre os blocos de comentários "AQUI VAI O CODIGO HTML DO POST" e "AQUI ACABA O POST".
+
+![](img/homepage3.png)
+
+O arquivo homepage.html é a própria homepage, o que está no arquivo que não é conteúdo é responsável pela estrutura da página, apenas o que estiver entre os dois blocos de comentário é o conteúdo em html dá página. Seria possível programar a homepage direto em html, mas como o `Blogdown` renderiza o Rmd para html, somente é necessário mudar o Rmd.
+
+O arquivo que realmente é responsável pela homepage, na verdade, é o themes/hugo-theme-cleanwhite/layouts/index.html
+
+![](img/homepage4.png)
+
+Esse arquivo mostra a homepage baseado em algum arquivo, aqui não é necessário modificar nada, é apenas para explicar como a homepage *realmente* é gerada.
+
+Resumindo:
+
+* Modifique o content/homepage/home.Rmd
+* Rode o `serve_site()`
+* Copie quase todo o conteúdo de content/homepage/home.html
+* Cole no local indicado em themes/hugo-theme-cleanwhite/layouts/partials/homepage.html
+* Rode o `serve_site()` novamente 
+
+
 ## IMPORTANTE: Como funcionam os endereços de arquivos dentro dos códigos?
 
-# Como dar o deploy do site para o endereço UFRGS
+Como motivação, veja o arquivo content/listas/index.Rmd:
 
-1 - Se você terminou as alterações do site e rodou o comando `Serve Site`, recomendo reiniciar o R para interromper atualização automática e impedir que o comando adicione arquivos à pasta public.
+![](img/endereco1.png)
 
-![](img/2.passo1.png)
+No diretório do arquivo index.Rmd estão as pastas com os arquivos em pdf, portanto, o endereço para os pdf's são do estilo 
 
-2 - Exclua todos os arquivos da pasta public
 
-![](img/2.passo2.png)
 
-3 - Rode o comando `blogdown::build_site()`. A diferença entre o `serve_site()` e o `build_site()` é que o primeiro gera o site para ser visualizado localmente, enquanto que o segundo gera o site para dar o deploy da pasta public no domínio. Ambos modificam o conteúdo da pasta public para cumprir o seu propósito, por isso é necessário excluir os arquivos gerados pelo `serve_site()` antes de rodar o `build_site()`.
 
-![](img/2.passo3.png)
 
-4 - Ao lado da aba Console, clique na aba Terminal e digite o seguinte comando `git pull origin master`. Esse comando adiciona quaisquer modificações em arquivos que estão no repositório do github mas não no seu repositório local. É importante usar esse comando para se certificar que você não estará sobrescrevendo alterações feitas por outros usuários na branch master, e seu repositório ficará igual ao do github.
 
-![](img/2.passo4.png)
 
-5 - Rode o comando `git add --all`
 
-![](img/2.passo5.png)
 
-6 - Em seguida, digite o comando `git commit -m "MENSAGEM DO COMMIT"`
 
-![](img/2.passo6.png)
 
-7 - Digite o comando `git push origin master` e suas alterações estarão no github.
 
-![](img/2.passo7.png)
 
-8 - Por fim, use algum software para dar o deploy no domínio UFRGS, como o FileZilla, lembrando que apenas a pasta public será upada, pois ela é o site.
+
+
 
 
 
